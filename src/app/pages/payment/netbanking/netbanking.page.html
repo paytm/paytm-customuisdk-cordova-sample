@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Net Banking</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-button (click)="getSaveNBcode()">
+        Get Last Saved Net Backing
+      </ion-button>
+    </ion-item>
+    <ion-item
+      button
+      *ngFor="let item of list;"
+      (click)="goForNetBankingTransaction(item.channelCode)"
+    >
+      <ion-label>
+        <h2>{{item.channelName}}</h2>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

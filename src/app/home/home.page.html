@@ -1,0 +1,65 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title> Cordova </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" padding>
+  <div id="container" padding>
+    <ion-item no-lines>
+      <ion-input placeholder="Enter Merchant Id" [(ngModel)]="mid"></ion-input>
+    </ion-item>
+    <ion-item no-lines>
+      <ion-input placeholder="Enter order Id" [(ngModel)]="orderId"></ion-input>
+    </ion-item>
+    <ion-item no-lines>
+      <ion-input placeholder="Enter amount" [(ngModel)]="amount"></ion-input>
+    </ion-item>
+    <ion-item no-lines>
+      <ion-input placeholder="Enter Transaction token" [(ngModel)]="txnToken">
+      </ion-input>
+    </ion-item>
+    <ion-item no-lines>
+      <ion-input placeholder="Enter Client Id" [(ngModel)]="clientId">
+      </ion-input>
+    </ion-item>
+    <ion-item no-lines>
+      <ion-checkbox
+        [checked]="isStaging"
+        [(ngModel)]="isStaging"
+        (click)="onEnvironmentChange()"
+      ></ion-checkbox>
+      <ion-label class="ion-padding">isStaging</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-radio-group ngDefaultControl [(ngModel)]="paymentFlow">
+        <ion-item>
+          <ion-label>NONE</ion-label>
+          <ion-radio slot="end" value="NONE"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>ADDANDPAY</ion-label>
+          <ion-radio slot="end" value="ADDANDPAY"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>HYBRID</ion-label>
+          <ion-radio slot="end" value="HYBRID"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-item>
+    <ion-button (click)="fetchAuthCode()">Fetch Auth Code</ion-button>
+    <ion-button (click)="fetchPayOption()"> Start Transaction </ion-button>
+    <ion-item>
+      <ion-label>
+        <div class="ion-text-wrap">{{value}}</div>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-button (click)="isPaytmAppInstalled()">
+        isPaytmAppInstalled
+      </ion-button>
+      <ion-button (click)="isAuthCodeValid()"> isAuthCodeValid </ion-button>
+    </ion-item>
+    <ion-button (click)="checkHasInstrument()"> checkHasInstrument </ion-button>
+  </div>
+</ion-content>

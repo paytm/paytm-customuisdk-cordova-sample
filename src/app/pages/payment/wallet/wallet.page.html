@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Wallet</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content id="container">
+  <ion-item>
+    <ion-label>Paytm Wallet -- {{paytmWalletBalance}}</ion-label>
+    <ion-item> </ion-item>
+    <ion-label>Current Balance -- {{paytmWalletBalance}}</ion-label>
+  </ion-item>
+  <ion-button class="ion-padding" expand="block" (click)="onClick()">
+    Pay
+  </ion-button>
+</ion-content>

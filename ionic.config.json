@@ -1,0 +1,7 @@
+{
+  "name": "CustomUiSampleApp",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

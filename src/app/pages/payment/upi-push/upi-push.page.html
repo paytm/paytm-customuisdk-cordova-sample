@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>UPI Push</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="ion-padding" *ngFor="let item of vpaBankDetail">
+    <ion-item>
+      <ion-label>{{item.bank}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-button (click)="fetchUpiBalance(item)"> Check Balance </ion-button>
+    </ion-item>
+    <ion-item>
+      <ion-button (click)="setUpiMpin(item)"> Set Mpin </ion-button>
+    </ion-item>
+    <ion-item>
+      <ion-button (click)="goForUpiPushTransaction(item)"> Pay </ion-button>
+    </ion-item>
+  </ion-card>
+</ion-content>

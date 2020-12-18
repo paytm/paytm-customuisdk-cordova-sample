@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Payments Modes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item (click)="onClick('/payment/wallet')">
+    <ion-label> <h1>Wallet</h1> </ion-label>
+  </ion-item>
+  <ion-item (click)="onClick('/payment/netbanking')">
+    <ion-label> <h1>NetBanking</h1> </ion-label>
+  </ion-item>
+  <ion-item (click)="onClick('/payment/upi-collect')">
+    <ion-label> <h1>Upi Collect</h1> </ion-label>
+  </ion-item>
+  <ion-item (click)="onClick('/payment/upi-intent')">
+    <ion-label> <h1>Upi Intent</h1> </ion-label>
+  </ion-item>
+  <ion-item (click)="onClick('/payment/upi-push')">
+    <ion-label> <h1>Upi Push</h1> </ion-label>
+  </ion-item>
+  <ion-item (click)="onClick('/payment/new-card')">
+    <ion-label> <h1>New Card</h1> </ion-label>
+  </ion-item>
+  <ion-item (click)="onClick('/payment/save-card')">
+    <ion-label> <h1>Save Card</h1> </ion-label>
+  </ion-item>
+</ion-content>

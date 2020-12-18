@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>New Card</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="ion-padding">
+    <ion-item no-lines>
+      <ion-input
+        type="number|text"
+        inputmode="numeric"
+        placeholder="Card Number"
+        [(ngModel)]="cardNumber"
+        (ionChange)="onTextChange(cardNumber)"
+      >
+      </ion-input>
+    </ion-item>
+    <ion-item no-lines>
+      <ion-input placeholder="Expiry MM/YY" [(ngModel)]="cardExpiry">
+      </ion-input>
+    </ion-item>
+
+    <ion-item no-lines>
+      <ion-input
+        type="number|text"
+        inputmode="numeric"
+        placeholder="Cvv"
+        [(ngModel)]="cardCvv"
+      >
+      </ion-input>
+    </ion-item>
+    <ion-item no-lines>
+      <ion-label>Card Type</ion-label>
+      <ion-select [(ngModel)]="cardType">
+        <ion-select-option value="CREDIT_CARD">Credit Card</ion-select-option>
+        <ion-select-option value="DEBIT_CARD">Debit Card</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item no-lines>
+      <ion-input placeholder="EMI plan id" [(ngModel)]="emiChannelId">
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-radio-group ngDefaultControl [(ngModel)]="authMode">
+        <ion-item no-lines *ngFor="let item of authModes">
+          <ion-label class="ion-padding">{{item}}</ion-label>
+          <ion-radio slot="end" [value]="item"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-item>
+    <ion-item>
+      <ion-checkbox [(ngModel)]="saveCard"> </ion-checkbox>
+      <ion-label class="ion-padding"> Save Card</ion-label>
+    </ion-item>
+    <ion-button expand="block" (click)="goForNewCardTransaction()">
+      Pay
+    </ion-button>
+    <ion-item no-lines>
+      <ion-button expand="block" (click)="fetchEmiDetail()">
+        Emi Detail
+      </ion-button>
+    </ion-item>
+  </ion-card>
+</ion-content>

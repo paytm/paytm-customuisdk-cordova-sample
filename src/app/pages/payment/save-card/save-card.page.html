@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Save Card</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-card class="ion-padding" *ngFor="let item of saveCardList">
+      <ion-item>
+        <ion-label> {{item.displayName}} </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          {{item.cardDetails.firstSixDigit}}••••••{{item.cardDetails.lastFourDigit}}
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-input
+          placeholder="CVV"
+          [(ngModel)]="item.cardCvv"
+          type="number | password "
+          inputmode="numeric"
+        ></ion-input>
+      </ion-item>
+      <ion-button center (click)="goForSaveCardTranscation(item)">
+        Pay
+      </ion-button>
+    </ion-card>
+  </ion-list>
+</ion-content>

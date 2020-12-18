@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Upi Collect</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item no-lines>
+    <ion-input placeholder="Enter Upi Id" [(ngModel)]="upiCode"></ion-input>
+  </ion-item>
+  <ion-item no-lines>
+    <ion-checkbox [(ngModel)]="saveVPA"></ion-checkbox>
+    <ion-label class="ion-padding">Save Vpa</ion-label>
+  </ion-item>
+
+  <ion-button (click)="goForUpiCollectTransaction()" expand="block">
+    Pay
+  </ion-button>
+
+  <ion-item>
+    <ion-button (click)="getLastSavedVpa()" expand="block">
+      get Last Saved vpa
+    </ion-button>
+  </ion-item>
+</ion-content>
