@@ -9,11 +9,12 @@
 
 <ion-content id="container">
   <ion-item>
-    <ion-label>Paytm Wallet -- {{paytmWalletBalance}}</ion-label>
-    <ion-item> </ion-item>
-    <ion-label>Current Balance -- {{paytmWalletBalance}}</ion-label>
+    <ion-label>Wallet Balance - {{paytmWalletBalance}}</ion-label>
+  </ion-item>
+  <ion-item *ngIf="showInfoLabel">
+    <ion-label>{{infoMessage}}</ion-label>
   </ion-item>
   <ion-button class="ion-padding" expand="block" (click)="onClick()">
-    Pay
+    {{payText}}
   </ion-button>
 </ion-content>

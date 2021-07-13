@@ -13,6 +13,36 @@ export class ApisService {
   constructor(private http: HttpClient) {}
 
   fetchPayOption(isStaging, mid, orderId, txnToken) {
-    //ToDo implement fetch pay option api to get details.
+    var urls;
+    if (isStaging) {
+      urls = this.stagUrl;
+    } else {
+      urls = this.prodUrl;
+    }
+    var url = `${urls}theia/api/v2/fetchPaymentOptions?mid=${mid}&orderId=${orderId}&ORDER_ID=${orderId}`;
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json",
+      }),
+    };
+
+    const body = {
+      head: {
+        requestTimestamp: "Time",
+        version: "v1",
+        channelId: "WAP",
+        txnToken: txnToken,
+      },
+      body: {
+        sdkVersion: "Android_1.0",
+      },
+    };
+    console.log(JSON.stringify(body));
+    return this.http.post(url, JSON.stringify(body), httpOptions).pipe(
+      map((res) => {
+        return res;
+      })
+    );
   }
 }

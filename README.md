@@ -5,7 +5,7 @@
 Install node Modules
 
 - npm install
-  
+
 Add Corodva to Sample App by running the following command.
 
 - ionic cordova prepare
@@ -16,7 +16,6 @@ Then Add the plugin in your ionic sample app with the following command.
 - ionic cordova plugin add cordova-paytm-customuisdk
 - ionic cordova plugin add cordova-plugin-androidx
 - ionic cordova plugin add cordova-plugin-androidx-adapter
-
 
 ### ionic-native wrapper
 

@@ -79,57 +79,54 @@ export class HomePage implements OnInit {
       this.mid,
       this.orderId,
       this.txnToken
-    );
-    //Get this value after calling fetch pay options
-
-    // .subscribe((res) => {
-    //   console.log(JSON.stringify(res));
-    //   var body = res["body"];
-    //   var resultInfo = body["resultInfo"];
-    //   if (resultInfo["resultStatus"] == "S") {
-    //     // var paymentFlow: string = body["paymentFlow"];
-    //     var merchantPayOption: any = body["merchantPayOption"];
-    //     var savedInstruments = merchantPayOption.savedInstruments;
-    //     var upiProfile: any = merchantPayOption.upiProfile;
-    //     var vpaDetails: any[] = [];
-    //     var bankAccounts: any[] = [];
-    //     var paytmWalletBalance: string = "";
-    //     if (
-    //       upiProfile != undefined &&
-    //       upiProfile.upiOnboarding == true &&
-    //       upiProfile.respDetails.profileDetail != undefined
-    //     ) {
-    //       vpaDetails = upiProfile.respDetails.profileDetail.vpaDetails;
-    //       bankAccounts = upiProfile.respDetails.profileDetail.bankAccounts;
-    //     }
-    //     if (
-    //       merchantPayOption.paymentModes[0].payChannelOptions[0]
-    //         .balanceInfo != undefined
-    //     ) {
-    //       paytmWalletBalance =
-    //         merchantPayOption.paymentModes[0].payChannelOptions[0].balanceInfo
-    //           .accountBalance.value;
-    //     }
-    //     var merchantDetails: any = body["merchantDetails"];
-    //     let navigationExtra: NavigationExtras = {
-    //       state: {
-    //         paymentFlow: this.paymentFlow,
-    //         savedInstruments: savedInstruments,
-    //         vpaDetails: vpaDetails,
-    //         bankAccounts: bankAccounts,
-    //         paytmWalletBalance: paytmWalletBalance,
-    //         merchantDetails: merchantDetails,
-    //         mid: this.mid,
-    //         orderId: this.orderId,
-    //         txnToken: this.txnToken,
-    //       },
-    //     };
-    //     this.initPaytmSdk();
-    //     this.router.navigate(["/payment"], navigationExtra);
-    //   } else {
-    //     alert("err => " + resultInfo["resultMsg"]);
-    //   }
-    // });
+    ).subscribe((res) => {
+      console.log(JSON.stringify(res));
+      var body = res["body"];
+      var resultInfo = body["resultInfo"];
+      if (resultInfo["resultStatus"] == "S") {
+        // var paymentFlow: string = body["paymentFlow"];
+        var merchantPayOption: any = body["merchantPayOption"];
+        var savedInstruments = merchantPayOption.savedInstruments;
+        var upiProfile: any = merchantPayOption.upiProfile;
+        var vpaDetails: any[] = [];
+        var bankAccounts: any[] = [];
+        var paytmWalletBalance: string = "";
+        if (
+          upiProfile != undefined &&
+          upiProfile.upiOnboarding == true &&
+          upiProfile.respDetails.profileDetail != undefined
+        ) {
+          vpaDetails = upiProfile.respDetails.profileDetail.vpaDetails;
+          bankAccounts = upiProfile.respDetails.profileDetail.bankAccounts;
+        }
+        if (
+          merchantPayOption.paymentModes[0].payChannelOptions[0]
+            .balanceInfo != undefined
+        ) {
+          paytmWalletBalance =
+            merchantPayOption.paymentModes[0].payChannelOptions[0].balanceInfo
+              .accountBalance.value;
+        }
+        var merchantDetails: any = body["merchantDetails"];
+        let navigationExtra: NavigationExtras = {
+          state: {
+            paymentFlow: this.paymentFlow,
+            savedInstruments: savedInstruments,
+            vpaDetails: vpaDetails,
+            bankAccounts: bankAccounts,
+            paytmWalletBalance: paytmWalletBalance,
+            merchantDetails: merchantDetails,
+            mid: this.mid,
+            orderId: this.orderId,
+            txnToken: this.txnToken,
+          },
+        };
+        this.initPaytmSdk();
+        this.router.navigate(["/payment"], navigationExtra);
+      } else {
+        alert("err => " + resultInfo["resultMsg"]);
+      }
+    });
   }
 
   initPaytmSdk() {
